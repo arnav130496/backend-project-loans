@@ -17,23 +17,23 @@ public class LoansController {
     ILoanService loansService;
 
     @PostMapping
-    public ResponseEntity<String> createNewCard(@RequestParam String mobileNumber){
+    public ResponseEntity<String> createNewLoan(@RequestParam String mobileNumber){
         loansService.createLoan(mobileNumber);
         return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<LoansDto> getCard(@RequestParam String mobileNumber){
+    public ResponseEntity<LoansDto> getLoan(@RequestParam String mobileNumber){
         return new ResponseEntity<>(loansService.fetchLoan(mobileNumber), HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<Boolean> updateCard(@RequestBody LoansDto loans){
+    public ResponseEntity<Boolean> updateLoan(@RequestBody LoansDto loans){
         return new ResponseEntity<>(loansService.updateLoan(loans), HttpStatus.OK);
     }
 
     @DeleteMapping
-    public ResponseEntity<Boolean> deleteCard(@RequestParam String mobileNumber){
+    public ResponseEntity<Boolean> deleteLoan(@RequestParam String mobileNumber){
         return new ResponseEntity<>( loansService.deleteLoan(mobileNumber), HttpStatus.OK);
     }
 
