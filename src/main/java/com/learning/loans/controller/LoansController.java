@@ -18,6 +18,7 @@ public class LoansController {
 
     @PostMapping
     public ResponseEntity<String> createNewLoan(@RequestParam String mobileNumber){
+        log.info("Create new loan Controller for mobile number {}", mobileNumber);
         loansService.createLoan(mobileNumber);
         return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }

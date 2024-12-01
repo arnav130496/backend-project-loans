@@ -22,6 +22,7 @@ public class LoansServiceImpl implements ILoanService {
 
     @Override
     public void createLoan(String mobileNumber) {
+        log.info("Create new loan for mobile number {}", mobileNumber);
         Optional<Loans> optional = loansRepository.findByMobileNumber(mobileNumber);
         if(optional.isPresent()){
             log.error("Loan already exists for mobile number : {}", mobileNumber);
